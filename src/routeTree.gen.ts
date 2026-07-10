@@ -78,13 +78,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/book' | '/contact' | '/gallery' | '/services' | '/team'
   id:
-    | '__root__'
-    | '/'
-    | '/book'
-    | '/contact'
-    | '/gallery'
-    | '/services'
-    | '/team'
+    '__root__' | '/' | '/book' | '/contact' | '/gallery' | '/services' | '/team'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
