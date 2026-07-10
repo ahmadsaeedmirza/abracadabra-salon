@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Wordmark } from "./Wordmark";
+import logoUrl from "../../assets/logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -23,15 +23,14 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-ivory/85 backdrop-blur-md border-b border-border/60"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled
+        ? "bg-ivory/85 backdrop-blur-md border-b border-border/60"
+        : "bg-transparent"
+        }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
-        <Link to="/" className="shrink-0">
-          <Wordmark />
+        <Link to="/" className="shrink-0 flex items-center">
+          <img src={logoUrl} alt="Abracadabra Salon" className="h-16 w-auto object-contain" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-9">

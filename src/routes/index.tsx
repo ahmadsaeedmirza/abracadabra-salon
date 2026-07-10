@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-salon.jpg";
+import heroImg from "@/assets/new-hero.png";
 import salonDetail from "@/assets/salon-detail.jpg";
 import productsImg from "@/assets/products.jpg";
 import galleryBlonde from "@/assets/gallery-blonde.jpg";
@@ -44,8 +44,8 @@ function Home() {
     <>
       {/* HERO */}
       <section className="relative pt-20 bg-ivory">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-10">
-          <div className="grid lg:grid-cols-12 gap-10 items-end">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-8 lg:pt-16 pb-10">
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-6 xl:col-span-5 rise">
               <div className="eyebrow mb-6 flex items-center gap-3">
                 <span className="w-6 hairline" /> Abracadabra Salon · Est. 2011
@@ -74,14 +74,14 @@ function Home() {
               </div>
             </div>
 
-            <div className="lg:col-span-6 xl:col-span-7 relative">
+            <div className="lg:col-span-5 xl:col-span-5 lg:col-start-7 xl:col-start-7 relative">
               <div className="relative overflow-hidden rounded-t-[180px] rounded-b-2xl aspect-[4/5] lg:aspect-[5/6] grain">
                 <img
                   src={heroImg}
                   alt="Warm bohemian interior of Abracadabra Salon"
                   className="w-full h-full object-cover"
-                  width={1600}
-                  height={1200}
+                  width={1200}
+                  height={800}
                 />
               </div>
 

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { SparkleMark } from "./SparkleMark";
+import logoUrl from "../../assets/logo.png";
 
 export function Footer() {
   return (
@@ -7,9 +7,8 @@ export function Footer() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-6">
-              <SparkleMark className="w-5 h-5 text-terracotta" />
-              <span className="font-display text-3xl">Abracadabra</span>
+            <div className="flex items-center mb-6">
+              <img src={logoUrl} alt="Abracadabra Salon" className="h-20 w-auto object-contain invert" />
             </div>
             <p className="font-display italic text-3xl leading-tight max-w-md text-ivory/90">
               Where hair becomes art, and every guest becomes family.
