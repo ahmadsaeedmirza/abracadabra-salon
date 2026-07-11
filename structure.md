@@ -109,7 +109,7 @@ Path: `/`
 A highly aesthetic landing page composed of multiple sections:
 - **Hero Section**: Displays the main brand value propositions, a booking CTA, and a responsive asymmetric main banner image (`new-hero.png`) with a floating testimonial badge. Features a link leading directly to `/studio`.
 - **Text Marquee**: An infinite text banner displaying service tags ("Vivid Color", "Balayage", "Curly Cuts", etc.) sliding horizontally.
-- **Featured Services**: Displays a grid of 6 services (cuts, custom color, vivid color, braids, nails, brows).
+- **Featured Services**: An asymmetrical, editorial lookbook spread that showcases our 6 key services. It features large visual focus on *Fantasy & Vivid Color* (our creative specialty), with embedded atmospheric images (balayage blonde, textured braids, clean nails), terracotta divider lines, and custom luxury tags ("Signature Service", "Most Requested", "Creative Specialty", "Client Favorite", "Bespoke Care", and "Fine Detail").
 - **Why Choose Abracadabra Section**: Displays a responsive grid of 6 elegant, high-quality cards detailing our studio specialties (Creative Color Expertise, Curl & Texture Specialists, Welcoming Atmosphere, Personalized Consultations, Premium Products, and Easy Booking Experience).
 - **Why Clients Stay**: Highlights 6 core values of the salon, aligned alongside a decorative image component (`salon-detail.jpg`).
 - **Product Showcase**: Displays a list of high-end styling brands (Oribe, R+Co, Olaplex, Davines, IGK).

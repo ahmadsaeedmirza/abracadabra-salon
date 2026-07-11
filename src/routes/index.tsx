@@ -21,14 +21,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const featured = [
-  { name: "Haircuts & Styling", detail: "Precision cuts and finishes that hold their shape all week." },
-  { name: "Custom Color", detail: "Dimensional balayage, foils, and lived-in blondes." },
-  { name: "Fantasy & Vivid Color", detail: "Pinks, violets, coppers, and painterly melts." },
-  { name: "Braids & Texture", detail: "Knotless, boho, feed-ins, and protective styling." },
-  { name: "Nails & Beauty", detail: "Manicures and pedicures with a slower, gentler pace." },
-  { name: "Brows & Permanent Makeup", detail: "Microblading, lip blush, and daily-wear brow shaping." },
-];
+
 
 const values = [
   { t: "Welcoming atmosphere", d: "Warm greetings, comfortable chairs, better coffee than you'd expect." },
@@ -140,22 +133,139 @@ function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-3xl overflow-hidden border border-border">
-            {featured.map((s, i) => (
-              <div
-                key={s.name}
-                className="group bg-ivory p-8 lg:p-10 min-h-[240px] flex flex-col justify-between hover:bg-cream transition-colors"
-              >
-                <div className="flex items-start justify-between">
-                  <span className="eyebrow text-espresso/50">0{i + 1}</span>
-                  <SparkleMark className="w-4 h-4 text-terracotta/60 group-hover:text-terracotta transition-colors" />
+          <div className="space-y-8 lg:space-y-12">
+            {/* Row 1: Fantasy Color & Haircuts */}
+            <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+              {/* Fantasy & Vivid Color - Large visual priority */}
+              <div className="lg:col-span-7 group relative bg-cream border border-border/80 rounded-3xl p-8 lg:p-12 flex flex-col justify-between overflow-hidden hover:shadow-[0_20px_50px_-20px_rgba(167,109,91,0.15)] transition-all duration-500">
+                <div className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-700 pointer-events-none">
+                  <img src={galleryVivid} alt="Fantasy & Vivid Color" className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/80 to-transparent" />
                 </div>
-                <div className="mt-16">
-                  <h3 className="font-display text-3xl leading-tight">{s.name}</h3>
-                  <p className="mt-3 text-sm text-espresso/65 leading-relaxed">{s.detail}</p>
+                
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="eyebrow text-terracotta border border-terracotta/20 px-3 py-1 rounded-full text-[10px] bg-ivory">Creative Specialty</span>
+                  <SparkleMark className="w-5 h-5 text-terracotta/60 group-hover:rotate-45 transition-transform duration-500" />
+                </div>
+
+                <div className="relative z-10 mt-20 lg:mt-32">
+                  <div className="h-px bg-terracotta/30 w-16 mb-6 group-hover:w-24 transition-all duration-500" />
+                  <h3 className="font-display text-4xl lg:text-5xl leading-tight text-espresso group-hover:text-terracotta transition-colors duration-300">
+                    Fantasy & Vivid Color
+                  </h3>
+                  <p className="mt-4 text-base text-espresso/70 leading-relaxed max-w-lg">
+                    Pinks, deep violets, coppers, and dreamy pastel melts. Custom hand-painted dimensions crafted to photograph like a painting.
+                  </p>
                 </div>
               </div>
-            ))}
+
+              {/* Haircuts & Styling */}
+              <div className="lg:col-span-5 group relative bg-ivory border border-border rounded-3xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden hover:bg-cream/60 transition-all duration-500">
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="eyebrow text-espresso/50 border border-border px-3 py-1 rounded-full text-[10px] bg-cream">Signature Service</span>
+                  <SparkleMark className="w-4 h-4 text-terracotta/40 group-hover:text-terracotta transition-colors" />
+                </div>
+                
+                <div className="mt-12 overflow-hidden rounded-2xl aspect-[16/9] border border-border/40 pointer-events-none">
+                  <img src={galleryBlonde} alt="Haircuts & Styling" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+
+                <div className="mt-8">
+                  <h3 className="font-display text-3xl leading-tight text-espresso">
+                    Haircuts & Styling
+                  </h3>
+                  <p className="mt-3 text-sm text-espresso/65 leading-relaxed">
+                    Precision cuts and custom finishes tailored to your texture, crafted to hold their organic shape all week long.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Row 2: Custom Color & Braids */}
+            <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+              {/* Custom Color */}
+              <div className="lg:col-span-5 group relative bg-ivory border border-border rounded-3xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden hover:bg-cream/60 transition-all duration-500">
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="eyebrow text-espresso/50 border border-border px-3 py-1 rounded-full text-[10px] bg-cream">Most Requested</span>
+                  <SparkleMark className="w-4 h-4 text-terracotta/40 group-hover:text-terracotta transition-colors" />
+                </div>
+
+                <div className="mt-20">
+                  <div className="h-px bg-border w-12 mb-4" />
+                  <h3 className="font-display text-3xl leading-tight text-espresso">
+                    Custom Color
+                  </h3>
+                  <p className="mt-3 text-sm text-espresso/65 leading-relaxed">
+                    Dimensional balayage, low-maintenance lived-in blondes, and root retouches tailored to grow out beautifully for months.
+                  </p>
+                </div>
+              </div>
+
+              {/* Braids & Texture */}
+              <div className="lg:col-span-7 group relative bg-cream border border-border/80 rounded-3xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden hover:shadow-[0_20px_50px_-20px_rgba(167,109,91,0.1)] transition-all duration-500">
+                <div className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-700 pointer-events-none">
+                  <img src={galleryBraids} alt="Braids & Texture" className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/80 to-transparent" />
+                </div>
+
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="eyebrow text-terracotta border border-terracotta/20 px-3 py-1 rounded-full text-[10px] bg-ivory">Client Favorite</span>
+                  <SparkleMark className="w-4 h-4 text-terracotta/60 group-hover:text-terracotta transition-colors" />
+                </div>
+
+                <div className="relative z-10 mt-20 lg:mt-24">
+                  <div className="h-px bg-terracotta/30 w-16 mb-4" />
+                  <h3 className="font-display text-3xl lg:text-4xl leading-tight text-espresso">
+                    Braids & Texture
+                  </h3>
+                  <p className="mt-3 text-sm text-espresso/70 leading-relaxed max-w-md">
+                    Knotless braids, boho feed-ins, and extensions created with patience, detail, and meticulous precision.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Row 3: Nails & Brows */}
+            <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+              {/* Nails & Beauty */}
+              <div className="lg:col-span-6 group relative bg-ivory border border-border rounded-3xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden hover:bg-cream/60 transition-all duration-500">
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="eyebrow text-espresso/50 border border-border px-3 py-1 rounded-full text-[10px] bg-cream">Bespoke Care</span>
+                  <SparkleMark className="w-4 h-4 text-terracotta/40 group-hover:text-terracotta transition-colors" />
+                </div>
+
+                <div className="mt-12 overflow-hidden rounded-2xl aspect-[21/9] border border-border/40 pointer-events-none">
+                  <img src={galleryNails} alt="Nails & Beauty" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+
+                <div className="mt-8">
+                  <h3 className="font-display text-3xl leading-tight text-espresso">
+                    Nails & Beauty
+                  </h3>
+                  <p className="mt-3 text-sm text-espresso/65 leading-relaxed">
+                    Nourishing, slow manicures and gentle hand care sessions designed for clean, minimal aesthetic perfection.
+                  </p>
+                </div>
+              </div>
+
+              {/* Brows & Permanent Makeup */}
+              <div className="lg:col-span-6 group relative bg-cream border border-border/80 rounded-3xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden hover:shadow-[0_20px_50px_-20px_rgba(167,109,91,0.1)] transition-all duration-500">
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="eyebrow text-espresso/50 border border-border px-3 py-1 rounded-full text-[10px] bg-ivory">Fine Detail</span>
+                  <SparkleMark className="w-4 h-4 text-terracotta/40 group-hover:text-terracotta transition-colors" />
+                </div>
+
+                <div className="mt-20 lg:mt-24">
+                  <div className="h-px bg-terracotta/30 w-16 mb-4" />
+                  <h3 className="font-display text-3xl leading-tight text-espresso">
+                    Brows & Permanent Makeup
+                  </h3>
+                  <p className="mt-3 text-sm text-espresso/65 leading-relaxed max-w-md">
+                    Precision brow shaping, soft tinting, and microblading crafted by appointment for effortless, daily-wear definition.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="mt-10 flex justify-end">
