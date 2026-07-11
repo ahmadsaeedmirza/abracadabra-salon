@@ -134,6 +134,7 @@ Lists the complete service offerings in a premium lookbook design:
 - **Asymmetrical Cards Grid**: Displays services as card elements using alternating layout widths (7+5, 5+7, 6+6 spans) to match the homepage lookbook.
 - **Luxury Service Tags**: Uses custom labels like *Signature*, *Most Requested*, *Creative Specialty*, *Specialty Care*, *Bespoke Art*, *Slow Care*, *Fine Detail*, etc.
 - **Interactive Accordion**: Tapping the card header expands its layout height to reveal full descriptive text, pricing, and a custom booking call-to-action (CTA).
+- **Dynamic Image Accents**: Integrates dynamic graphics matching the homepage layout, showing framed lookbook photos, dim background overlays, or typographic-only spaces across cards.
 
 ### 4.5. Our Studio: [studio.tsx](file:///c:/Users/ahmad/Downloads/abracadabra-artisanal-design-main/abracadabra-artisanal-design-main/src/routes/studio.tsx)
 Path: `/studio`

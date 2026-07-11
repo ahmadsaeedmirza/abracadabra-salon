@@ -2,6 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { services } from "@/lib/salon-data";
 import { SparkleMark } from "@/components/site/SparkleMark";
+import galleryBlonde from "@/assets/gallery-blonde.jpg";
+import galleryVivid from "@/assets/gallery-vivid.jpg";
+import galleryBraids from "@/assets/gallery-braids.jpg";
+import galleryCurly from "@/assets/gallery-curly.jpg";
+import galleryBrunette from "@/assets/gallery-brunette.jpg";
+import galleryNails from "@/assets/gallery-nails.jpg";
+import salonDetail from "@/assets/salon-detail.jpg";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -20,6 +27,17 @@ const categoryIntros: Record<string, string> = {
   "Color": "Lived-in dimensional balayage, highlight foils, and vibrant custom fantasy pigments created like a fine art canvas.",
   "Texture": "Curly texture methods, protective braids, and hand-tied extensions styled with meticulous patient care.",
   "Beauty": "Nourishing manicures, slow-paced hand treatments, gentle brow shaping, and bespoke permanent cosmetics.",
+};
+
+const serviceImages: Record<string, { src: string; style: "framed" | "dim" }> = {
+  "Signature Haircut": { src: galleryBlonde, style: "framed" },
+  "Special Occasion Styling": { src: galleryBrunette, style: "dim" },
+  "Balayage": { src: galleryBlonde, style: "framed" },
+  "Fantasy & Vivid Color": { src: galleryVivid, style: "dim" },
+  "Curly Cut": { src: galleryCurly, style: "framed" },
+  "Knotless Braids": { src: galleryBraids, style: "dim" },
+  "Manicure": { src: galleryNails, style: "framed" },
+  "Permanent Makeup": { src: salonDetail, style: "dim" },
 };
 
 const getLuxuryLabel = (name: string): string => {
@@ -91,6 +109,7 @@ function ServicesPage() {
                   {group.items.map((item, i) => {
                     const key = `${group.category}-${item.name}`;
                     const isOpen = open === key;
+                    const imgData = serviceImages[item.name];
                     
                     // Assign column spans dynamically for lookbook asymmetry
                     let gridSpanClass = "md:col-span-6";
@@ -114,57 +133,72 @@ function ServicesPage() {
                             setOpen(isOpen ? null : key);
                           }
                         }}
-                        className={`group bg-cream border transition-all duration-500 rounded-3xl p-8 flex flex-col justify-between hover:shadow-[0_15px_40px_-15px_rgba(167,109,91,0.12)] cursor-pointer ${
+                        className={`group bg-cream border transition-all duration-500 rounded-3xl p-8 flex flex-col justify-between hover:shadow-[0_15px_40px_-15px_rgba(167,109,91,0.12)] cursor-pointer relative overflow-hidden ${
                           isOpen ? "border-terracotta/40 ring-1 ring-terracotta/5 shadow-[0_15px_30px_-10px_rgba(167,109,91,0.08)]" : "border-border/80 hover:border-terracotta/30"
                         } ${gridSpanClass}`}
                       >
-                        <div>
-                          <div className="flex items-center justify-between gap-4 mb-6">
-                            <span className={`eyebrow text-[10px] px-3 py-1 rounded-full border transition-colors ${
-                              isOpen ? "bg-ivory text-terracotta border-terracotta/20" : "bg-cream text-espresso/50 border-border"
-                            }`}>
-                              {getLuxuryLabel(item.name)}
-                            </span>
-                            <button
-                              onClick={() => setOpen(isOpen ? null : key)}
-                              aria-label={isOpen ? "Collapse details" : "Expand details"}
-                              className="cta shrink-0"
-                            >
-                              <SparkleMark className={`w-4 h-4 transition-all duration-500 ${isOpen ? "text-terracotta rotate-45 scale-110" : "text-espresso/25 group-hover:text-terracotta"}`} />
-                            </button>
+                        {imgData && imgData.style === "dim" && (
+                          <div className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-700 pointer-events-none">
+                            <img src={imgData.src} alt={item.name} className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/80 to-transparent" />
+                          </div>
+                        )}
+
+                        <div className="relative z-10 w-full flex flex-col justify-between h-full">
+                          <div>
+                            <div className="flex items-center justify-between gap-4 mb-6">
+                              <span className={`eyebrow text-[10px] px-3 py-1 rounded-full border transition-colors ${
+                                isOpen ? "bg-ivory text-terracotta border-terracotta/20" : "bg-cream text-espresso/50 border-border"
+                              }`}>
+                                {getLuxuryLabel(item.name)}
+                              </span>
+                              <button
+                                onClick={() => setOpen(isOpen ? null : key)}
+                                aria-label={isOpen ? "Collapse details" : "Expand details"}
+                                className="cta shrink-0"
+                              >
+                                <SparkleMark className={`w-4 h-4 transition-all duration-500 ${isOpen ? "text-terracotta rotate-45 scale-110" : "text-espresso/25 group-hover:text-terracotta"}`} />
+                              </button>
+                            </div>
+
+                            {imgData && imgData.style === "framed" && (
+                              <div className="mb-6 overflow-hidden rounded-2xl aspect-[16/9] border border-border/40 pointer-events-none">
+                                <img src={imgData.src} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                              </div>
+                            )}
+
+                            <div className="flex items-baseline justify-between gap-4">
+                              <h3 className="font-display text-2xl lg:text-3xl leading-tight text-espresso transition-colors group-hover:text-terracotta duration-300">{item.name}</h3>
+                              <div className="font-sans text-sm text-espresso/60 tracking-wider tabular-nums shrink-0">{item.price}</div>
+                            </div>
+                            
+                            <p className={`mt-4 text-sm text-espresso/65 leading-relaxed transition-all duration-300 ${isOpen ? "opacity-0 max-h-0 overflow-hidden mt-0" : "opacity-100"}`}>
+                              {item.desc}
+                            </p>
                           </div>
 
-                          <div className="flex items-baseline justify-between gap-4">
-                            <h3 className="font-display text-2xl lg:text-3xl leading-tight text-espresso transition-colors group-hover:text-terracotta duration-300">{item.name}</h3>
-                            <div className="font-sans text-sm text-espresso/60 tracking-wider tabular-nums shrink-0">{item.price}</div>
-                          </div>
-                          
-                          <p className={`mt-4 text-sm text-espresso/65 leading-relaxed transition-all duration-300 ${isOpen ? "opacity-0 max-h-0 overflow-hidden mt-0" : "opacity-100"}`}>
-                            {item.desc}
-                          </p>
-                        </div>
-
-                        <div
-                          className={`grid transition-[grid-template-rows] duration-500 ease-out ${
-                            isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                          }`}
-                        >
-                          <div className="overflow-hidden">
-                            <div className="pt-6 border-t border-border/60 mt-6">
-                              <p className="text-espresso/70 leading-relaxed text-sm">{item.desc}</p>
-                              <div className="mt-6 flex items-center justify-between gap-4">
-                                <Link
-                                  to="/book"
-                                  className="inline-flex items-center gap-2 bg-espresso text-ivory px-5 py-2.5 rounded-full text-xs font-medium hover:bg-terracotta transition-colors"
-                                >
-                                  Book this service <span aria-hidden>→</span>
-                                </Link>
-                                <button
-                                  onClick={() => setOpen(null)}
-                                  className="cta text-xs text-espresso/50 hover:text-terracotta border-b border-transparent hover:border-terracotta transition-colors py-1"
-                                >
-                                  Collapse
-                                </button>
+                          <div
+                            className={`grid transition-[grid-template-rows] duration-500 ease-out ${
+                              isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                            }`}
+                          >
+                            <div className="overflow-hidden">
+                              <div className="pt-6 border-t border-border/60 mt-6">
+                                <p className="text-espresso/70 leading-relaxed text-sm">{item.desc}</p>
+                                <div className="mt-6 flex items-center justify-between gap-4">
+                                  <Link
+                                    to="/book"
+                                    className="inline-flex items-center gap-2 bg-espresso text-ivory px-5 py-2.5 rounded-full text-xs font-medium hover:bg-terracotta transition-colors"
+                                  >
+                                    Book this service <span aria-hidden>→</span>
+                                  </Link>
+                                  <button
+                                    onClick={() => setOpen(null)}
+                                    className="cta text-xs text-espresso/50 hover:text-terracotta border-b border-transparent hover:border-terracotta transition-colors py-1"
+                                  >
+                                    Collapse
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           </div>
