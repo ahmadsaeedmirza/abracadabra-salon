@@ -185,22 +185,26 @@ function ServicesPage() {
                             <div className="overflow-hidden">
                               <div className="pt-6 border-t border-border/60 mt-6">
                                 <p className="text-espresso/70 leading-relaxed text-sm">{item.desc}</p>
-                                <div className="mt-6 flex items-center justify-between gap-4">
-                                  <Link
-                                    to="/book"
-                                    className="inline-flex items-center gap-2 bg-espresso text-ivory px-5 py-2.5 rounded-full text-xs font-medium hover:bg-terracotta transition-colors"
-                                  >
-                                    Book this service <span aria-hidden>→</span>
-                                  </Link>
-                                  <button
-                                    onClick={() => setOpen(null)}
-                                    className="cta text-xs text-espresso/50 hover:text-terracotta border-b border-transparent hover:border-terracotta transition-colors py-1"
-                                  >
-                                    Collapse
-                                  </button>
-                                </div>
                               </div>
                             </div>
+                          </div>
+
+                          {/* Always visible action area at the bottom of each service card */}
+                          <div className="mt-8 pt-4 border-t border-border/40 flex items-center justify-between gap-4">
+                            <Link
+                              to="/book"
+                              className="inline-flex items-center gap-2 bg-espresso text-ivory px-5 py-2.5 rounded-full text-xs font-medium hover:bg-terracotta transition-colors"
+                            >
+                              Book this service <span aria-hidden>→</span>
+                            </Link>
+                            {isOpen && (
+                              <button
+                                onClick={() => setOpen(null)}
+                                className="cta text-xs text-espresso/50 hover:text-terracotta border-b border-transparent hover:border-terracotta transition-colors py-1"
+                              >
+                                Collapse
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
