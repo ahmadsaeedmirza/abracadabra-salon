@@ -128,10 +128,12 @@ A simplified multi-step booking client interface that removes stylist assignment
 
 ### 4.4. Services Menu: [services.tsx](file:///c:/Users/ahmad/Downloads/abracadabra-artisanal-design-main/abracadabra-artisanal-design-main/src/routes/services.tsx)
 Path: `/services`
-Lists the complete service offerings:
-- **Structured Categories**: Groups services by Hair, Color, Texture, and Beauty.
-- **Interactive Accordion**: Tapping a service slides open detailed descriptions and exposes a booking link for that item.
-- **Layout**: Uses a sticky category sidebar format on desktop.
+Lists the complete service offerings in a premium lookbook design:
+- **Hero Header**: Features eyebrow metadata, a large editorial headline, and a short introductory blurb with a decorative pulse accent.
+- **Stacked Categories**: Replaces the old sticky sidebar layout with vertically stacked category spreads (Hair, Color, Texture, Beauty), each starting with an eyebrow index, a serif title, and a custom hairline divider.
+- **Asymmetrical Cards Grid**: Displays services as card elements using alternating layout widths (7+5, 5+7, 6+6 spans) to match the homepage lookbook.
+- **Luxury Service Tags**: Uses custom labels like *Signature*, *Most Requested*, *Creative Specialty*, *Specialty Care*, *Bespoke Art*, *Slow Care*, *Fine Detail*, etc.
+- **Interactive Accordion**: Tapping the card header expands its layout height to reveal full descriptive text, pricing, and a custom booking call-to-action (CTA).
 
 ### 4.5. Our Studio: [studio.tsx](file:///c:/Users/ahmad/Downloads/abracadabra-artisanal-design-main/abracadabra-artisanal-design-main/src/routes/studio.tsx)
 Path: `/studio`
