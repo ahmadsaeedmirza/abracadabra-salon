@@ -42,7 +42,7 @@ export function Footer() {
             <div className="eyebrow text-ivory/50 mb-5">Explore</div>
             <ul className="text-sm space-y-2">
               {[
-                { to: "/team", l: "Meet the Team" },
+                { to: "/studio", l: "Our Studio" },
                 { to: "/services", l: "Services" },
                 { to: "/gallery", l: "Gallery" },
                 { to: "/book", l: "Book" },

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { services, stylists } from "@/lib/salon-data";
+import { services } from "@/lib/salon-data";
 import { SparkleMark } from "@/components/site/SparkleMark";
 
 export const Route = createFileRoute("/book")({
@@ -25,7 +25,6 @@ const faqs = [
 
 function BookPage() {
   const [service, setService] = useState<string>("");
-  const [stylist, setStylist] = useState<string>("");
   const [day, setDay] = useState<number | null>(null);
   const [time, setTime] = useState<string>("");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -46,7 +45,7 @@ function BookPage() {
     return arr;
   }, []);
 
-  const ready = service && stylist && day !== null && time;
+  const ready = service && day !== null && time;
 
   return (
     <>
@@ -77,33 +76,9 @@ function BookPage() {
               </select>
             </div>
 
-            {/* Step 2 */}
+            {/* Step 2 — calendar */}
             <div className="bg-cream border border-border rounded-3xl p-8 lg:p-10">
-              <StepHeader n="02" title="Choose your stylist" />
-              <div className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                {stylists.map((s) => (
-                  <button
-                    key={s.slug}
-                    onClick={() => setStylist(s.name)}
-                    className={`group text-left rounded-2xl overflow-hidden border transition-all ${
-                      stylist === s.name ? "border-terracotta ring-2 ring-terracotta/30" : "border-border hover:border-terracotta/50"
-                    }`}
-                  >
-                    <div className="aspect-[3/4] overflow-hidden">
-                      <img src={s.photo} alt={s.name} className="w-full h-full object-cover" loading="lazy" />
-                    </div>
-                    <div className="p-3 bg-ivory">
-                      <div className="font-display text-lg leading-tight">{s.name}</div>
-                      <div className="text-[10px] text-terracotta uppercase tracking-widest mt-0.5">{s.specialty.split("·").pop()}</div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Step 3 — calendar */}
-            <div className="bg-cream border border-border rounded-3xl p-8 lg:p-10">
-              <StepHeader n="03" title="Pick a day" />
+              <StepHeader n="02" title="Pick a day" />
               <div className="mt-6 grid grid-cols-4 sm:grid-cols-7 gap-2">
                 {days.map((dd) => (
                   <button
@@ -123,9 +98,9 @@ function BookPage() {
               </div>
             </div>
 
-            {/* Step 4 — times */}
+            {/* Step 3 — times */}
             <div className="bg-cream border border-border rounded-3xl p-8 lg:p-10">
-              <StepHeader n="04" title="Choose a time" />
+              <StepHeader n="03" title="Choose a time" />
               <div className="mt-6 flex flex-wrap gap-2">
                 {times.map((t) => (
                   <button
@@ -152,7 +127,6 @@ function BookPage() {
               </div>
               <dl className="space-y-5 text-sm">
                 <Row label="Service" value={service || "—"} />
-                <Row label="Stylist" value={stylist || "—"} />
                 <Row label="Day" value={day ? days[day - 1].label : "—"} />
                 <Row label="Time" value={time || "—"} />
               </dl>

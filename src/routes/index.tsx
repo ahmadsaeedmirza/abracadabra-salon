@@ -8,7 +8,7 @@ import galleryBraids from "@/assets/gallery-braids.jpg";
 import galleryCurly from "@/assets/gallery-curly.jpg";
 import galleryBrunette from "@/assets/gallery-brunette.jpg";
 import galleryNails from "@/assets/gallery-nails.jpg";
-import { stylists, reviews } from "@/lib/salon-data";
+import { reviews } from "@/lib/salon-data";
 import { SparkleMark } from "@/components/site/SparkleMark";
 
 export const Route = createFileRoute("/")({
@@ -39,6 +39,15 @@ const values = [
   { t: "Creative transformations", d: "Bold change or gentle refresh — always thoughtful." },
 ];
 
+const reasons = [
+  { name: "Creative Color Expertise", detail: "From dimensional balayage to custom fantasy vivids, we treat hair color like fine art." },
+  { name: "Curl & Texture Specialists", detail: "Expertly trained artists dedicated to celebrating, cutting, and nurturing natural textures." },
+  { name: "Welcoming Atmosphere", detail: "A warm bohemian space with plants, terracotta tones, natural light, and premium coffee." },
+  { name: "Personalized Consultations", detail: "Every service begins with an unhurried, collaborative chat to fully understand your hair goals." },
+  { name: "Premium Products", detail: "A highly curated shelf of high-performing, clean ingredients from Oribe, R+Co, and Olaplex." },
+  { name: "Easy Booking Experience", detail: "Reserve and manage your appointments online in under a minute, at any time." },
+];
+
 function Home() {
   return (
     <>
@@ -66,10 +75,10 @@ function Home() {
                   Book Appointment <span aria-hidden>→</span>
                 </Link>
                 <Link
-                  to="/team"
+                  to="/studio"
                   className="inline-flex items-center gap-2 text-espresso px-2 py-4 text-sm font-medium border-b border-espresso hover:text-terracotta hover:border-terracotta transition"
                 >
-                  Meet the Stylists
+                  Explore Our Studio
                 </Link>
               </div>
             </div>
@@ -157,37 +166,34 @@ function Home() {
         </div>
       </section>
 
-      {/* MEET STYLISTS */}
+      {/* WHY CHOOSE ABRACADABRA */}
       <section className="py-28 bg-sand/40">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
             <div>
-              <div className="eyebrow mb-4">02 — The Team</div>
+              <div className="eyebrow mb-4">02 — The Studio</div>
               <h2 className="display-lg max-w-2xl">
-                Meet the artists behind <span className="italic-accent text-terracotta">the magic.</span>
+                Why Choose <span className="italic-accent text-terracotta">Abracadabra.</span>
               </h2>
             </div>
-            <Link to="/team" className="text-sm border-b border-espresso pb-1 self-start hover:text-terracotta hover:border-terracotta">
-              See everyone →
+            <Link to="/studio" className="text-sm border-b border-espresso pb-1 self-start hover:text-terracotta hover:border-terracotta">
+              Explore our studio →
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {stylists.map((s, i) => (
-              <div key={s.slug} className={`group ${i % 2 === 1 ? "lg:mt-12" : ""}`}>
-                <div className="overflow-hidden rounded-2xl aspect-[4/5] bg-cream">
-                  <img
-                    src={s.photo}
-                    alt={s.name}
-                    className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                    width={800}
-                    height={1000}
-                    loading="lazy"
-                  />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-3xl overflow-hidden border border-border">
+            {reasons.map((r, i) => (
+              <div
+                key={r.name}
+                className="group bg-ivory p-8 lg:p-10 min-h-[240px] flex flex-col justify-between hover:bg-cream transition-colors"
+              >
+                <div className="flex items-start justify-between">
+                  <span className="eyebrow text-espresso/50">0{i + 1}</span>
+                  <SparkleMark className="w-4 h-4 text-terracotta/60 group-hover:text-terracotta transition-colors" />
                 </div>
-                <div className="mt-4">
-                  <div className="font-display text-2xl">{s.name}</div>
-                  <div className="text-xs text-terracotta mt-1">{s.specialty}</div>
+                <div className="mt-16">
+                  <h3 className="font-display text-3xl leading-tight">{r.name}</h3>
+                  <p className="mt-3 text-sm text-espresso/65 leading-relaxed">{r.detail}</p>
                 </div>
               </div>
             ))}
